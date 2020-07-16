@@ -299,6 +299,7 @@ class Learner(ABC):
                 group_train_sz = self.cfg.data.group_train_sz
                 if group_train_sz is not None:
                     train_inds = list(range(len(train_ds)))
+                    random.seed(1234)
                     random.shuffle(train_inds)
                     train_inds = train_inds[0:group_train_sz]
                     train_ds = Subset(train_ds, train_inds)
